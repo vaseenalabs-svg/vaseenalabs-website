@@ -36,3 +36,6 @@ next-env.d.ts
 
 # backups
 _assets_backup/
+
+.vercel
+.env*
