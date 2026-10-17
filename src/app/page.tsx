@@ -5,14 +5,17 @@ import {
   FiArrowRight,
   FiCheck,
   FiCompass,
+  FiFeather,
   FiHeart,
   FiLayers,
+  FiMail,
   FiMessageCircle,
   FiMoon,
+  FiPhone,
   FiPlay,
-  FiFeather,
   FiStar,
   FiSun,
+  FiWind,
   FiZap,
 } from 'react-icons/fi'
 
@@ -107,8 +110,36 @@ const caseStudies = [
   },
 ]
 
+const floatingBadges = [
+  { icon: FiWind, label: 'Calm systems', className: 'badge-top-left' },
+  { icon: FiHeart, label: 'Brand care', className: 'badge-top-right' },
+  { icon: FiMessageCircle, label: 'AI flow', className: 'badge-bottom-left' },
+  { icon: FiStar, label: 'Premium craft', className: 'badge-bottom-right' },
+]
+
+const capabilityCards = [
+  {
+    title: 'Brand experiences',
+    text: 'We build identity systems, landing pages, and digital storytelling that feel premium, trustworthy, and emotionally memorable.',
+  },
+  {
+    title: 'AI & automation',
+    text: 'From lead capture to sales support and internal automation, we design systems that save time without making the business feel robotic.',
+  },
+  {
+    title: 'Product engineering',
+    text: 'We create scalable web products and custom platforms that balance speed, structure, and long-term flexibility.',
+  },
+  {
+    title: 'Growth design',
+    text: 'Every digital touchpoint is shaped to be clear, persuasive, and conversion-aware so it helps the business grow in real time.',
+  },
+]
+
 export default function Home() {
   const stickyRef = useRef<HTMLElement | null>(null)
+  const animationRef = useRef<number | null>(null)
+  const cursorRef = useRef({ x: 0, y: 0 })
   const [scrollProgress, setScrollProgress] = useState(0)
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false })
 
@@ -123,8 +154,23 @@ export default function Home() {
       setScrollProgress(progress)
     }
 
+    const handleScroll = () => {
+      if (animationRef.current !== null) return
+
+      animationRef.current = window.requestAnimationFrame(() => {
+        updateProgress()
+        animationRef.current = null
+      })
+    }
+
     const handlePointerMove = (event: PointerEvent) => {
-      setCursor((current) => ({ ...current, x: event.clientX, y: event.clientY, visible: true }))
+      cursorRef.current = { x: event.clientX, y: event.clientY }
+      if (animationRef.current !== null) return
+
+      animationRef.current = window.requestAnimationFrame(() => {
+        setCursor({ ...cursorRef.current, visible: true })
+        animationRef.current = null
+      })
     }
 
     const handlePointerLeave = () => {
@@ -132,16 +178,19 @@ export default function Home() {
     }
 
     updateProgress()
-    window.addEventListener('scroll', updateProgress, { passive: true })
-    window.addEventListener('resize', updateProgress)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
     window.addEventListener('pointermove', handlePointerMove)
     document.addEventListener('pointerleave', handlePointerLeave)
 
     return () => {
-      window.removeEventListener('scroll', updateProgress)
-      window.removeEventListener('resize', updateProgress)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
       window.removeEventListener('pointermove', handlePointerMove)
       document.removeEventListener('pointerleave', handlePointerLeave)
+      if (animationRef.current !== null) {
+        window.cancelAnimationFrame(animationRef.current)
+      }
     }
   }, [])
 
@@ -180,6 +229,15 @@ export default function Home() {
         <section className="hero-section" id="home">
           <div className="ambient ambient-one" />
           <div className="ambient ambient-two" />
+
+          <div className="floating-badges" aria-hidden="true">
+            {floatingBadges.map(({ icon: Icon, label, className }) => (
+              <div key={label} className={`floating-badge ${className}`}>
+                <Icon />
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
 
           <div className="hero-grid">
             <div className="hero-copy">
@@ -224,6 +282,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
+                  preload="metadata"
                   className="hero-video"
                   poster="/images/placeholder.jpg"
                 >
@@ -263,6 +322,26 @@ export default function Home() {
           ))}
         </section>
 
+        <section className="content-panel">
+          <div className="panel-intro">
+            <span className="eyebrow dark">
+              <FiCompass />
+              what we do
+            </span>
+            <h2>We turn ambition into calm, modern momentum.</h2>
+          </div>
+
+          <div className="capability-grid">
+            {capabilityCards.map((card) => (
+              <article className="capability-card glass-panel" key={card.title}>
+                <div className="capability-number">0{capabilityCards.indexOf(card) + 1}</div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="story-shell" id="experience" ref={stickyRef}>
           <div className="story-stick">
             <div className="story-track" style={{ transform: trackTranslate }}>
@@ -282,7 +361,7 @@ export default function Home() {
                     }}
                   >
                     <div className="story-video-wrap">
-                      <video autoPlay muted loop playsInline className="story-video">
+                      <video autoPlay muted loop playsInline preload="metadata" className="story-video">
                         <source src={slide.video} type="video/mp4" />
                       </video>
                       <div className="story-gradient" />
@@ -403,12 +482,25 @@ export default function Home() {
                 let&apos;s build something memorable
               </span>
               <h2>Your next digital chapter starts here.</h2>
+              <p className="cta-copy">
+                We help founders, creators, and modern businesses turn ideas into premium digital experiences that feel human, elegant, and highly effective.
+              </p>
             </div>
 
-            <a href="mailto:vaseenalabs@gmail.com" className="primary-btn">
-              hello@vaseenalabs.com
-              <FiArrowRight />
-            </a>
+            <div className="contact-actions">
+              <a href="mailto:vaseenalabs@gmail.com" className="primary-btn action-btn">
+                <FiMail />
+                hello@vaseenalabs.com
+              </a>
+              <a href="https://wa.me/919738176663" target="_blank" rel="noreferrer" className="secondary-btn action-btn">
+                <FiMessageCircle />
+                WhatsApp
+              </a>
+              <a href="tel:+919738176663" className="secondary-btn action-btn">
+                <FiPhone />
+                Call now
+              </a>
+            </div>
           </div>
         </section>
       </main>
