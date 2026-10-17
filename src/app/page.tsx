@@ -80,9 +80,37 @@ const process = [
   { step: '04', title: 'Launch', copy: 'We refine the rollout with performance and growth in mind.' },
 ]
 
+const caseStudies = [
+  {
+    title: 'Northstar Logistics',
+    type: 'B2B operations',
+    summary: 'Reframed a legacy logistics brand with a sharper story, a precision-driven website, and automation flows that reduced manual coordination.',
+    metric: '+214%',
+    result: 'higher inbound inquiries',
+    tags: ['UX', 'CRM', 'Automation'],
+  },
+  {
+    title: 'Asteria Wellness',
+    type: 'Luxury wellness',
+    summary: 'Built a calming, premium digital identity that translated wellness rituals into a polished customer journey and higher booking intent.',
+    metric: '3.2x',
+    result: 'more qualified bookings',
+    tags: ['Brand', 'Landing', 'Conversion'],
+  },
+  {
+    title: 'Summit Studio',
+    type: 'Creative agency',
+    summary: 'Developed a portfolio platform with cinematic motion and editorial storytelling that elevated their positioning and case-study narrative.',
+    metric: '44%',
+    result: 'longer average engagement',
+    tags: ['Motion', 'Portfolio', 'Strategy'],
+  },
+]
+
 export default function Home() {
   const stickyRef = useRef<HTMLElement | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false })
 
   useEffect(() => {
     const node = stickyRef.current
@@ -95,18 +123,39 @@ export default function Home() {
       setScrollProgress(progress)
     }
 
+    const handlePointerMove = (event: PointerEvent) => {
+      setCursor((current) => ({ ...current, x: event.clientX, y: event.clientY, visible: true }))
+    }
+
+    const handlePointerLeave = () => {
+      setCursor((current) => ({ ...current, visible: false }))
+    }
+
     updateProgress()
     window.addEventListener('scroll', updateProgress, { passive: true })
     window.addEventListener('resize', updateProgress)
+    window.addEventListener('pointermove', handlePointerMove)
+    document.addEventListener('pointerleave', handlePointerLeave)
 
     return () => {
       window.removeEventListener('scroll', updateProgress)
       window.removeEventListener('resize', updateProgress)
+      window.removeEventListener('pointermove', handlePointerMove)
+      document.removeEventListener('pointerleave', handlePointerLeave)
     }
   }, [])
 
+  const trackTranslate = `translate3d(-${scrollProgress * 200}vw, 0, 0)`
+
   return (
     <div className="page-shell">
+      <div
+        className={`cursor-ring ${cursor.visible ? 'is-visible' : ''}`}
+        style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
+        aria-hidden="true"
+      >
+        <span className="cursor-core" />
+      </div>
       <header className="site-header">
         <div className="brand-mark">
           <span className="brand-dot" />
@@ -116,6 +165,7 @@ export default function Home() {
         <nav className="top-nav" aria-label="Main navigation">
           <a href="#home">Home</a>
           <a href="#experience">Experience</a>
+          <a href="#work">Work</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -215,36 +265,85 @@ export default function Home() {
 
         <section className="story-shell" id="experience" ref={stickyRef}>
           <div className="story-stick">
-            <div
-              className="story-track"
-              style={{ transform: `translate3d(-${scrollProgress * 200}%, 0, 0)` }}
-            >
-              {slides.map((slide) => (
-                <article className="story-slide" key={slide.id}>
-                  <div className="story-video-wrap">
-                    <video autoPlay muted loop playsInline className="story-video">
-                      <source src={slide.video} type="video/mp4" />
-                    </video>
-                    <div className="story-gradient" />
-                  </div>
+            <div className="story-track" style={{ transform: trackTranslate }}>
+              {slides.map((slide, index) => {
+                const offset = index - scrollProgress * (slides.length - 1)
+                const rotateY = offset * -18
+                const scale = 1 - Math.abs(offset) * 0.08
+                const opacity = Math.max(0.4, 1 - Math.abs(offset) * 0.34)
 
-                  <div className="story-content">
-                    <div className="story-tag">{slide.label}</div>
-                    <h2>{slide.title}</h2>
-                    <p>{slide.copy}</p>
+                return (
+                  <article
+                    className="story-slide page-turn"
+                    key={slide.id}
+                    style={{
+                      transform: `perspective(1600px) rotateY(${rotateY}deg) scale(${scale})`,
+                      opacity,
+                    }}
+                  >
+                    <div className="story-video-wrap">
+                      <video autoPlay muted loop playsInline className="story-video">
+                        <source src={slide.video} type="video/mp4" />
+                      </video>
+                      <div className="story-gradient" />
+                    </div>
 
-                    <ul>
-                      {slide.bullets.map((item) => (
-                        <li key={item}>
-                          <FiCheck />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
+                    <div className="story-content">
+                      <div className="story-tag">{slide.label}</div>
+                      <h2>{slide.title}</h2>
+                      <p>{slide.copy}</p>
+
+                      <ul>
+                        {slide.bullets.map((item) => (
+                          <li key={item}>
+                            <FiCheck />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                )
+              })}
             </div>
+          </div>
+        </section>
+
+        <section className="case-study-section" id="work">
+          <div className="panel-intro">
+            <span className="eyebrow dark">
+              <FiStar />
+              selected work
+            </span>
+            <h2>Case studies built for momentum.</h2>
+          </div>
+
+          <div className="case-study-grid">
+            {caseStudies.map((study) => (
+              <article className="case-card glass-panel" key={study.title}>
+                <div className="case-card-visual">
+                  <span className="case-type">{study.type}</span>
+                  <strong>{study.metric}</strong>
+                </div>
+
+                <div className="case-card-body">
+                  <small>{study.result}</small>
+                  <h3>{study.title}</h3>
+                  <p>{study.summary}</p>
+
+                  <div className="case-tags">
+                    {study.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+
+                  <div className="case-footer">
+                    <span>View story</span>
+                    <FiArrowRight />
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
