@@ -62,6 +62,18 @@ body::before {
   z-index: -1;
 }
 
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(12px, -18px, 0) rotate(6deg);
+  }
+  100% {
+    transform: translate3d(-10px, 14px, 0) rotate(-6deg);
+  }
+}
+
 img,
 video {
   max-width: 100%;
