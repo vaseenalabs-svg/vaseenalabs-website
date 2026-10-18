@@ -56,23 +56,7 @@ const metrics = [
   { value: '99%', label: 'client delight' },
 ]
 
-const pillars = [
-  {
-    icon: FiCompass,
-    title: 'Strategy first',
-    text: 'We map moments, motion, and business intent before a single line of code is written.',
-  },
-  {
-    icon: FiFeather,
-    title: 'Soulful design',
-    text: 'Every interface is shaped to feel premium, grounded, and emotionally resonant.',
-  },
-  {
-    icon: FiZap,
-    title: 'Intelligent systems',
-    text: 'AI, automation, and product thinking come together to remove friction at scale.',
-  },
-]
+
 
 const process = [
   { step: '01', title: 'Discover', copy: 'We unpack the brand, the audience, and the opportunity.' },
@@ -135,6 +119,15 @@ const implementationFlow = [
     title: 'Refine',
     detail: 'We tune conversion, clarity, performance, and long-term growth momentum.',
   },
+]
+
+const automationFlow = [
+  { label: 'Brief', sub: 'Signals', color: 'sand', status: 'Live intake' },
+  { label: 'Research', sub: 'Insights', color: 'mist', status: 'Context mapped' },
+  { label: 'Design', sub: 'System', color: 'lavender', status: 'Brand in motion' },
+  { label: 'Build', sub: 'Product', color: 'sand', status: 'Experience live' },
+  { label: 'Automate', sub: 'Ops', color: 'mist', status: 'Flow deployed' },
+  { label: 'Launch', sub: 'Scale', color: 'lavender', status: 'Growth active' },
 ]
 
 const capabilityCards = [
@@ -338,16 +331,52 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="feature-strip">
-          {pillars.map(({ icon: Icon, title, text }) => (
-            <article className="feature-card glass-panel" key={title}>
-              <div className="feature-icon">
-                <Icon />
+        <section className="automation-showcase">
+          <div className="panel-intro">
+            <span className="eyebrow dark">
+              <FiCompass />
+              business automation system
+            </span>
+            <h2>Built like a live operating engine for growth.</h2>
+          </div>
+
+          <div className="automation-flow-panel glass-panel">
+            <div className="flow-header">
+              <span className="live-dot" />
+              live enterprise workflow
+            </div>
+
+            <div className="automation-architecture" aria-label="Business automation workflow diagram">
+              <div className="system-glow" />
+              <div className="orbit orbit-one" />
+              <div className="orbit orbit-two" />
+              <div className="pulse-ring pulse-ring-one" />
+              <div className="pulse-ring pulse-ring-two" />
+
+              <div className="system-core">
+                <span>AI orchestration</span>
+                <strong>Business engine</strong>
               </div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
+
+              {automationFlow.map((node, index) => (
+                <div key={node.label} className={`automation-node node-${index + 1} ${node.color} ${index === 3 ? 'active' : ''}`}>
+                  <span className="node-rank">0{index + 1}</span>
+                  <div className="node-copy">
+                    <strong>{node.label}</strong>
+                    <small>{node.sub}</small>
+                  </div>
+                  <span className="node-status">{node.status}</span>
+                </div>
+              ))}
+
+              <div className="data-stream stream-a" />
+              <div className="data-stream stream-b" />
+              <div className="data-stream stream-c" />
+              <div className="data-stream stream-d" />
+              <div className="data-stream stream-e" />
+              <div className="data-stream stream-f" />
+            </div>
+          </div>
         </section>
 
         <section className="content-panel">
