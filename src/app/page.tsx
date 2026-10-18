@@ -348,12 +348,12 @@ export default function Home() {
 
             <div className="automation-architecture" aria-label="Business automation workflow diagram">
               <svg className="automation-svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <path className="flow-path path-1" d="M 220 180 C 310 170, 390 200, 510 250" />
-                <path className="flow-path path-2" d="M 240 370 C 330 335, 430 296, 510 285" />
-                <path className="flow-path path-3" d="M 530 155 C 560 150, 575 175, 590 210" />
-                <path className="flow-path path-4" d="M 890 165 C 820 170, 730 190, 680 235" />
-                <path className="flow-path path-5" d="M 920 360 C 820 335, 720 305, 670 285" />
-                <path className="flow-path path-6" d="M 700 395 C 650 360, 620 325, 610 285" />
+                <path className="flow-path path-1" d="M 210 200 C 300 205, 360 220, 470 255" />
+                <path className="flow-path path-2" d="M 250 420 C 330 380, 390 345, 455 325" />
+                <path className="flow-path path-3" d="M 520 142 C 560 175, 585 180, 610 200" />
+                <path className="flow-path path-4" d="M 890 175 C 800 165, 730 182, 685 225" />
+                <path className="flow-path path-5" d="M 910 390 C 820 390, 715 360, 650 340" />
+                <path className="flow-path path-6" d="M 640 430 C 610 440, 570 435, 540 400" />
               </svg>
 
               <div className="system-glow" />

@@ -709,12 +709,12 @@ header {
   background: linear-gradient(180deg, rgba(181, 168, 211, 0.14), rgba(17, 16, 14, 0.76));
 }
 
-.node-1 { left: 8%; top: 16%; animation-delay: 0.3s; }
-.node-2 { left: 19%; top: 68%; animation-delay: 1s; }
-.node-3 { left: 42%; top: 12%; animation-delay: 1.5s; }
-.node-4 { right: 18%; top: 17%; animation-delay: 0.9s; }
-.node-5 { right: 8%; top: 64%; animation-delay: 1.8s; }
-.node-6 { right: 35%; top: 74%; animation-delay: 2.1s; }
+.node-1 { left: 7%; top: 20%; animation-delay: 0.3s; }
+.node-2 { left: 16%; top: 68%; animation-delay: 1s; }
+.node-3 { left: 39%; top: 10%; animation-delay: 1.5s; }
+.node-4 { right: 17%; top: 18%; animation-delay: 0.9s; }
+.node-5 { right: 8%; top: 68%; animation-delay: 1.8s; }
+.node-6 { left: 46%; top: 74%; animation-delay: 2.1s; }
 
 .node-rank {
   display: inline-flex;
@@ -777,28 +777,40 @@ header {
 
 .flow-path {
   fill: none;
-  stroke: rgba(244, 212, 157, 0.9);
   stroke-width: 2;
   stroke-linecap: round;
-  stroke-dasharray: 14 16;
-  animation: flowDash 4s linear infinite;
-  opacity: 0.9;
+  stroke-dasharray: 14 18;
+  opacity: 0.36;
+  animation: flowDash 8s linear infinite;
+}
+
+.path-1,
+.path-4 {
+  stroke: rgba(240, 214, 170, 0.9);
 }
 
 .path-2,
-.path-5,
-.path-6 {
-  stroke: rgba(189, 173, 212, 0.9);
+.path-5 {
+  stroke: rgba(190, 174, 214, 0.9);
 }
 
 .path-3,
-.path-4 {
-  stroke: rgba(255, 255, 255, 0.48);
+.path-6 {
+  stroke: rgba(255, 255, 255, 0.5);
 }
 
+.path-1 { animation-delay: 0s; }
+.path-2 { animation-delay: 1.1s; }
+.path-3 { animation-delay: 2.2s; }
+.path-4 { animation-delay: 3.3s; }
+.path-5 { animation-delay: 4.4s; }
+.path-6 { animation-delay: 5.5s; }
+
 @keyframes flowDash {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -220; }
+  from { stroke-dashoffset: 0; opacity: 0.2; }
+  16% { opacity: 0.9; }
+  52% { opacity: 0.9; }
+  to { stroke-dashoffset: -220; opacity: 0.2; }
 }
 
 @keyframes floatNode {
