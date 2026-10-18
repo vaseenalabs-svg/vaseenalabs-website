@@ -265,6 +265,21 @@ export default function Home() {
                 </a>
               </div>
 
+              <div className="quick-links" aria-label="Core strengths">
+                <span className="quick-pill">
+                  <FiCompass />
+                  Strategy
+                </span>
+                <span className="quick-pill">
+                  <FiZap />
+                  Automation
+                </span>
+                <span className="quick-pill">
+                  <FiWind />
+                  Design
+                </span>
+              </div>
+
               <div className="metrics-row" aria-label="Key metrics">
                 {metrics.map((item) => (
                   <div className="metric-card" key={item.label}>

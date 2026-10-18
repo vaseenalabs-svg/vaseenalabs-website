@@ -228,6 +228,8 @@ header {
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 2;
   max-width: 660px;
 }
 
@@ -281,6 +283,33 @@ header {
   align-items: center;
   gap: 1rem;
   margin-top: 1.8rem;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+.quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(243, 239, 231, 0.82);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quick-pill svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: #f5d89c;
 }
 
 .metrics-row {
@@ -983,6 +1012,16 @@ header {
   }
 }
 
+@media (min-width: 1600px) {
+  .hero-copy h1 {
+    font-size: clamp(4.5rem, 6vw, 8rem);
+  }
+
+  .hero-grid {
+    max-width: 1380px;
+  }
+}
+
 @media (max-width: 980px) {
   .top-nav {
     display: none;
@@ -1007,6 +1046,7 @@ header {
 
   .video-panel {
     transform: none;
+    width: min(100%, 540px);
   }
 
   .cta-panel,
@@ -1036,6 +1076,19 @@ header {
     display: none;
   }
 
+  .hero-section {
+    padding-top: 3rem;
+  }
+
+  .quick-links {
+    gap: 0.5rem;
+  }
+
+  .quick-pill {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
   .metrics-row {
     grid-template-columns: 1fr;
   }
@@ -1050,6 +1103,15 @@ header {
 
   .story-content p {
     font-size: 1rem;
+  }
+
+  .cta-panel {
+    padding: 1.2rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    min-width: unset;
   }
 
   .site-footer {
