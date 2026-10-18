@@ -6,7 +6,6 @@ import {
   FiCheck,
   FiCompass,
   FiFeather,
-  FiHeart,
   FiLayers,
   FiMail,
   FiMessageCircle,
@@ -15,7 +14,6 @@ import {
   FiPlay,
   FiStar,
   FiSun,
-  FiWind,
   FiZap,
 } from 'react-icons/fi'
 
@@ -110,13 +108,6 @@ const caseStudies = [
   },
 ]
 
-const floatingBadges = [
-  { icon: FiWind, label: 'Calm systems', className: 'badge-top-left' },
-  { icon: FiHeart, label: 'Brand care', className: 'badge-top-right' },
-  { icon: FiMessageCircle, label: 'AI flow', className: 'badge-bottom-left' },
-  { icon: FiStar, label: 'Premium craft', className: 'badge-bottom-right' },
-]
-
 const capabilityCards = [
   {
     title: 'Brand experiences',
@@ -136,12 +127,23 @@ const capabilityCards = [
   },
 ]
 
+const fireflies = [
+  { left: '8%', top: '18%', size: 6, delay: '0s' },
+  { left: '16%', top: '55%', size: 8, delay: '1.6s' },
+  { left: '28%', top: '28%', size: 7, delay: '3.2s' },
+  { left: '38%', top: '62%', size: 9, delay: '2.1s' },
+  { left: '52%', top: '22%', size: 7, delay: '4.1s' },
+  { left: '64%', top: '46%', size: 8, delay: '0.7s' },
+  { left: '78%', top: '30%', size: 10, delay: '2.6s' },
+  { left: '88%', top: '58%', size: 7, delay: '3.8s' },
+  { left: '72%', top: '72%', size: 8, delay: '1.1s' },
+  { left: '42%', top: '76%', size: 6, delay: '4.5s' },
+]
+
 export default function Home() {
   const stickyRef = useRef<HTMLElement | null>(null)
   const animationRef = useRef<number | null>(null)
-  const cursorRef = useRef({ x: 0, y: 0 })
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false })
 
   useEffect(() => {
     const node = stickyRef.current
@@ -163,31 +165,13 @@ export default function Home() {
       })
     }
 
-    const handlePointerMove = (event: PointerEvent) => {
-      cursorRef.current = { x: event.clientX, y: event.clientY }
-      if (animationRef.current !== null) return
-
-      animationRef.current = window.requestAnimationFrame(() => {
-        setCursor({ ...cursorRef.current, visible: true })
-        animationRef.current = null
-      })
-    }
-
-    const handlePointerLeave = () => {
-      setCursor((current) => ({ ...current, visible: false }))
-    }
-
     updateProgress()
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', handleScroll)
-    window.addEventListener('pointermove', handlePointerMove)
-    document.addEventListener('pointerleave', handlePointerLeave)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
-      window.removeEventListener('pointermove', handlePointerMove)
-      document.removeEventListener('pointerleave', handlePointerLeave)
       if (animationRef.current !== null) {
         window.cancelAnimationFrame(animationRef.current)
       }
@@ -198,13 +182,6 @@ export default function Home() {
 
   return (
     <div className="page-shell">
-      <div
-        className={`cursor-ring ${cursor.visible ? 'is-visible' : ''}`}
-        style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
-        aria-hidden="true"
-      >
-        <span className="cursor-core" />
-      </div>
       <header className="site-header">
         <div className="brand-mark">
           <span className="brand-dot" />
@@ -230,12 +207,19 @@ export default function Home() {
           <div className="ambient ambient-one" />
           <div className="ambient ambient-two" />
 
-          <div className="floating-badges" aria-hidden="true">
-            {floatingBadges.map(({ icon: Icon, label, className }) => (
-              <div key={label} className={`floating-badge ${className}`}>
-                <Icon />
-                <span>{label}</span>
-              </div>
+          <div className="firefly-layer" aria-hidden="true">
+            {fireflies.map((firefly, index) => (
+              <span
+                key={`${firefly.left}-${firefly.top}-${index}`}
+                className="firefly"
+                style={{
+                  left: firefly.left,
+                  top: firefly.top,
+                  width: `${firefly.size}px`,
+                  height: `${firefly.size}px`,
+                  animationDelay: firefly.delay,
+                }}
+              />
             ))}
           </div>
 
@@ -247,11 +231,11 @@ export default function Home() {
               </span>
 
               <h1>
-                We build digital experiences that feel <span>alive.</span>
+                We shape <span>quietly magnetic</span> digital brands.
               </h1>
 
               <p>
-                Vaseena Labs crafts soulful brands, AI-driven systems, and cinematic websites for founders who want modern impact without sacrificing warmth.
+                Vaseena Labs creates warm, considered brands and software experiences for founders who want clarity, presence, and measurable growth without the noise.
               </p>
 
               <div className="cta-row">
@@ -275,7 +259,7 @@ export default function Home() {
                   Automation
                 </span>
                 <span className="quick-pill">
-                  <FiWind />
+                  <FiStar />
                   Design
                 </span>
               </div>
@@ -314,7 +298,7 @@ export default function Home() {
                 </div>
 
                 <div className="mini-card card-bottom">
-                  <FiHeart />
+                  <FiMessageCircle />
                   <div>
                     <small>Client energy</small>
                     <strong>Warm + premium</strong>
