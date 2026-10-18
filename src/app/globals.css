@@ -692,16 +692,6 @@ header {
   animation: floatNode 6s ease-in-out infinite;
 }
 
-.automation-node::before {
-  content: '';
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(244, 212, 157, 0.9), rgba(255,255,255,0.12));
-  background-size: 200% 100%;
-  box-shadow: 0 0 16px rgba(244, 212, 157, 0.25);
-  animation: flowLine 3.5s linear infinite;
-}
-
 .automation-node.active {
   border-color: rgba(244, 212, 157, 0.58);
   box-shadow: 0 0 0 1px rgba(244, 212, 157, 0.18), 0 28px 50px rgba(116, 93, 46, 0.18);
@@ -720,17 +710,11 @@ header {
 }
 
 .node-1 { left: 8%; top: 16%; animation-delay: 0.3s; }
-.node-1::before { right: -82px; top: 50%; width: 82px; }
 .node-2 { left: 19%; top: 68%; animation-delay: 1s; }
-.node-2::before { right: -72px; top: 50%; width: 72px; }
 .node-3 { left: 42%; top: 12%; animation-delay: 1.5s; }
-.node-3::before { right: -83px; top: 50%; width: 83px; }
 .node-4 { right: 18%; top: 17%; animation-delay: 0.9s; }
-.node-4::before { left: -82px; top: 50%; width: 82px; }
 .node-5 { right: 8%; top: 64%; animation-delay: 1.8s; }
-.node-5::before { left: -90px; top: 50%; width: 90px; }
 .node-6 { right: 35%; top: 74%; animation-delay: 2.1s; }
-.node-6::before { left: -76px; top: 50%; width: 76px; }
 
 .node-rank {
   display: inline-flex;
@@ -782,38 +766,39 @@ header {
   text-transform: uppercase;
 }
 
-.data-stream {
+.automation-svg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 160px;
-  height: 2px;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(244, 212, 157, 0.85), transparent);
-  box-shadow: 0 0 16px rgba(244, 212, 157, 0.35);
-  opacity: 0;
-  animation: streamPulse 3.6s ease-in-out infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.stream-a { transform: rotate(35deg) translate(-50%, -50%); width: 180px; }
-.stream-b { transform: rotate(122deg) translate(-50%, -50%); width: 170px; animation-delay: 0.7s; }
-.stream-c { transform: rotate(-25deg) translate(-50%, -50%); width: 190px; animation-delay: 1.4s; }
-.stream-d { transform: rotate(-120deg) translate(-50%, -50%); width: 180px; animation-delay: 2.1s; }
-.stream-e { transform: rotate(14deg) translate(-50%, -50%); width: 200px; animation-delay: 2.7s; }
-.stream-f { transform: rotate(-60deg) translate(-50%, -50%); width: 160px; animation-delay: 3.1s; }
-
-@keyframes flowLine {
-  0% { background-position: 0% 50%; opacity: 0.35; }
-  50% { opacity: 1; }
-  100% { background-position: 200% 50%; opacity: 0.4; }
+.flow-path {
+  fill: none;
+  stroke: rgba(244, 212, 157, 0.9);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 14 16;
+  animation: flowDash 4s linear infinite;
+  opacity: 0.9;
 }
 
-@keyframes streamPulse {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { opacity: 0; }
+.path-2,
+.path-5,
+.path-6 {
+  stroke: rgba(189, 173, 212, 0.9);
+}
+
+.path-3,
+.path-4 {
+  stroke: rgba(255, 255, 255, 0.48);
+}
+
+@keyframes flowDash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -220; }
 }
 
 @keyframes floatNode {

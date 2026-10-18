@@ -347,6 +347,15 @@ export default function Home() {
             </div>
 
             <div className="automation-architecture" aria-label="Business automation workflow diagram">
+              <svg className="automation-svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path className="flow-path path-1" d="M 220 180 C 310 170, 390 200, 510 250" />
+                <path className="flow-path path-2" d="M 240 370 C 330 335, 430 296, 510 285" />
+                <path className="flow-path path-3" d="M 530 155 C 560 150, 575 175, 590 210" />
+                <path className="flow-path path-4" d="M 890 165 C 820 170, 730 190, 680 235" />
+                <path className="flow-path path-5" d="M 920 360 C 820 335, 720 305, 670 285" />
+                <path className="flow-path path-6" d="M 700 395 C 650 360, 620 325, 610 285" />
+              </svg>
+
               <div className="system-glow" />
               <div className="orbit orbit-one" />
               <div className="orbit orbit-two" />
@@ -368,13 +377,6 @@ export default function Home() {
                   <span className="node-status">{node.status}</span>
                 </div>
               ))}
-
-              <div className="data-stream stream-a" />
-              <div className="data-stream stream-b" />
-              <div className="data-stream stream-c" />
-              <div className="data-stream stream-d" />
-              <div className="data-stream stream-e" />
-              <div className="data-stream stream-f" />
             </div>
           </div>
         </section>
