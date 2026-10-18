@@ -89,6 +89,8 @@ const caseStudies = [
     metric: '+214%',
     result: 'higher inbound inquiries',
     tags: ['UX', 'CRM', 'Automation'],
+    image:
+      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Asteria Wellness',
@@ -97,6 +99,8 @@ const caseStudies = [
     metric: '3.2x',
     result: 'more qualified bookings',
     tags: ['Brand', 'Landing', 'Conversion'],
+    image:
+      'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Summit Studio',
@@ -105,6 +109,31 @@ const caseStudies = [
     metric: '44%',
     result: 'longer average engagement',
     tags: ['Motion', 'Portfolio', 'Strategy'],
+    image:
+      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80',
+  },
+]
+
+const implementationFlow = [
+  {
+    step: '01',
+    title: 'Discover',
+    detail: 'We gather the story, the ambition, the audience, and the friction points.',
+  },
+  {
+    step: '02',
+    title: 'Design',
+    detail: 'We shape the experience system, visual language, and brand motion.',
+  },
+  {
+    step: '03',
+    title: 'Build',
+    detail: 'We design the product experience and deploy the right systems at scale.',
+  },
+  {
+    step: '04',
+    title: 'Refine',
+    detail: 'We tune conversion, clarity, performance, and long-term growth momentum.',
   },
 ]
 
@@ -387,6 +416,29 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="flow-section">
+          <div className="panel-intro">
+            <span className="eyebrow dark">
+              <FiLayers />
+              live implementation flow
+            </span>
+            <h2>From idea to launch, shaped with intention.</h2>
+          </div>
+
+          <div className="flow-grid">
+            {implementationFlow.map((item, index) => (
+              <div className="flow-node" key={item.step}>
+                <div className="flow-rail">
+                  {index < implementationFlow.length - 1 && <span className="flow-line" />}
+                </div>
+                <div className="flow-badge">{item.step}</div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="case-study-section" id="work">
           <div className="panel-intro">
             <span className="eyebrow dark">
@@ -399,7 +451,14 @@ export default function Home() {
           <div className="case-study-grid">
             {caseStudies.map((study) => (
               <article className="case-card glass-panel" key={study.title}>
-                <div className="case-card-visual">
+                <div
+                  className="case-card-visual"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(11, 11, 13, 0.1), rgba(11, 11, 13, 0.6)), url(${study.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
                   <span className="case-type">{study.type}</span>
                   <strong>{study.metric}</strong>
                 </div>
