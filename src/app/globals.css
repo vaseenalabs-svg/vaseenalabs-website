@@ -560,6 +560,188 @@ header {
   animation: pulseGlow 1.6s ease-in-out infinite alternate;
 }
 
+.workflow-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+  margin-bottom: 1.1rem;
+}
+
+.workflow-tab {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.72);
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  transition: all 0.25s ease;
+}
+
+.workflow-tab.active {
+  background: linear-gradient(135deg, rgba(244, 212, 157, 0.18), rgba(255, 255, 255, 0.06));
+  border-color: rgba(244, 212, 157, 0.42);
+  color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 0 1px rgba(244, 212, 157, 0.14), inset 0 0 18px rgba(244, 212, 157, 0.08);
+}
+
+.workflow-flowchart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem 0 0.3rem;
+  min-height: 260px;
+}
+
+.workflow-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.workflow-svg path {
+  fill: none;
+  stroke: rgba(244, 212, 157, 0.7);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 10 14;
+  animation: flowDash 3.2s linear infinite;
+}
+
+.workflow-flow {
+  position: relative;
+  z-index: 1;
+  height: 180px;
+}
+
+.workflow-step {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 150px;
+}
+
+.workflow-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 90px;
+  padding: 0.8rem 0.8rem 0.7rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 14px 28px rgba(13, 11, 10, 0.18), 0 0 18px rgba(244, 212, 157, 0.08);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  overflow: visible;
+}
+
+.workflow-node::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 1.4rem;
+  background: radial-gradient(circle, rgba(244, 212, 157, 0.18), transparent 62%);
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.workflow-node span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.82);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.workflow-node strong {
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+}
+
+.tone-amber { border-color: rgba(244, 212, 157, 0.35); }
+.tone-gold { border-color: rgba(236, 206, 148, 0.4); }
+.tone-lavender { border-color: rgba(186, 166, 221, 0.35); }
+.tone-steel { border-color: rgba(255, 255, 255, 0.22); }
+
+.workflow-particle {
+  position: absolute;
+  left: 100px;
+  top: 120px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,1), rgba(244, 212, 157, 1) 30%, rgba(244, 212, 157, 0.2) 65%, rgba(244, 212, 157, 0) 100%);
+  box-shadow: 0 0 16px rgba(244, 212, 157, 0.9), 0 0 30px rgba(244, 212, 157, 0.7);
+  offset-path: path('M 100 120 C 210 55, 280 55, 360 120 S 515 195, 585 120 S 760 50, 900 120');
+  animation: flowParticle 3.2s linear infinite;
+  z-index: 2;
+}
+
+.workflow-summary {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.summary-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.64);
+}
+
+.workflow-summary strong {
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.95);
+}
+
+@keyframes flowParticle {
+  0% {
+    offset-distance: 0%;
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
 .automation-architecture {
   position: relative;
   z-index: 1;
@@ -1286,6 +1468,7 @@ header {
   color: var(--text);
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-decoration: none;
 }
 
 .case-footer svg {
@@ -1303,6 +1486,32 @@ header {
   font-size: clamp(2.1rem, 4vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.06em;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.testimonial-card {
+  padding: 1.5rem 1.2rem;
+}
+
+.testimonial-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.8;
+  font-size: 1.08rem;
+}
+
+.testimonial-card strong {
+  display: block;
+  margin-top: 1rem;
+  color: rgba(244, 212, 157, 0.95);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
 }
 
 .detail-grid {

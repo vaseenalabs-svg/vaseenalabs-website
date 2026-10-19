@@ -20,31 +20,31 @@ import {
 const slides = [
   {
     id: '01',
-    label: 'Brand motion',
-    title: 'Design that feels like a quiet luxury brand in motion.',
+    label: 'Web Development',
+    title: 'Modern websites built to convert and scale with clarity.',
     copy:
-      'We shape identity systems, narratives, and digital experiences that feel calm, premium, and unmistakably memorable.',
-    bullets: ['Identity systems', 'Immersive storytelling', 'Conversion-focused UX'],
+      'We design high-performance business websites, landing pages, and digital experiences that feel premium and perform under pressure.',
+    bullets: ['Business websites', 'Landing pages', 'Custom platforms'],
     video: '/videos/desktop_hero_background.mp4',
     accent: 'amber',
   },
   {
     id: '02',
-    label: 'Automation flow',
-    title: 'Systems that remove friction while keeping the soul intact.',
+    label: 'AI Automation',
+    title: 'Replace repetitive work with intelligent systems that move faster.',
     copy:
-      'From intelligent workflows to AI-powered operations, we turn complex processes into elegant and scalable everyday experiences.',
-    bullets: ['AI orchestration', 'Workflow design', 'Operational clarity'],
+      'From AI-powered operations to workflow automation, we build systems that remove manual bottlenecks and let teams focus on growth.',
+    bullets: ['Workflow automation', 'AI agents', 'Lead operations'],
     video: '/videos/Tech 1.mp4',
     accent: 'sky',
   },
   {
     id: '03',
-    label: 'Future craft',
-    title: 'Technology built to feel effortless and unforgettable.',
+    label: 'Custom Software',
+    title: 'Purpose-built software for the way your business actually works.',
     copy:
-      'We blend strategy, engineering, and design into products that move with intention and deliver measurable business momentum.',
-    bullets: ['Product engineering', 'Sustainable scale', 'Human-first interfaces'],
+      'We engineer dashboards, internal tools, management systems, and custom software that are tailored to your exact process and goals.',
+    bullets: ['SaaS products', 'Dashboards', 'API integrations'],
     video: '/videos/Tech 2.mp4',
     accent: 'violet',
   },
@@ -59,42 +59,57 @@ const metrics = [
 
 
 const process = [
-  { step: '01', title: 'Discover', copy: 'We unpack the brand, the audience, and the opportunity.' },
-  { step: '02', title: 'Design', copy: 'We create elegant systems with clarity, motion, and depth.' },
-  { step: '03', title: 'Build', copy: 'We engineer experiences that are fast, polished, and scalable.' },
-  { step: '04', title: 'Launch', copy: 'We refine the rollout with performance and growth in mind.' },
+  { step: '01', title: 'Discover', copy: 'Understand the business, the users, and the requirements behind the opportunity.' },
+  { step: '02', title: 'Strategize', copy: 'Plan the tech stack, architecture, and roadmap aligned to business goals.' },
+  { step: '03', title: 'Design', copy: 'Create premium interfaces, user journeys, and consistent visual systems.' },
+  { step: '04', title: 'Build', copy: 'Engineer clean code, integrate systems, test thoroughly, and optimize performance.' },
+  { step: '05', title: 'Launch & Automate', copy: 'Deploy the system and introduce AI-driven workflows for maximum ROI.' },
 ]
 
 const caseStudies = [
   {
-    title: 'Northstar Logistics',
-    type: 'B2B operations',
-    summary: 'Reframed a legacy logistics brand with a sharper story, a precision-driven website, and automation flows that reduced manual coordination.',
-    metric: '+214%',
-    result: 'higher inbound inquiries',
-    tags: ['UX', 'CRM', 'Automation'],
+    title: 'Vasundhara Palace',
+    type: 'Restaurant',
+    summary: 'Premium restaurant website designed to showcase the dining experience and turn visitors into guests through stronger brand presence and clearer conversion paths.',
+    metric: 'Premium',
+    result: 'brand-first restaurant experience',
+    tags: ['Next.js', 'Tailwind', 'Web Design'],
     image:
-      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80',
+    link: 'https://www.vasundharapalacebangalore.com/',
   },
   {
-    title: 'Asteria Wellness',
-    type: 'Luxury wellness',
-    summary: 'Built a calming, premium digital identity that translated wellness rituals into a polished customer journey and higher booking intent.',
-    metric: '3.2x',
-    result: 'more qualified bookings',
-    tags: ['Brand', 'Landing', 'Conversion'],
+    title: 'SeaPlate Bangalore',
+    type: 'Restaurant',
+    summary: 'Vibrant seafood restaurant website with immersive menu storytelling and a smoother mobile-first reservation journey for local diners.',
+    metric: 'Mobile',
+    result: 'stronger direct engagement',
+    tags: ['React', 'UI/UX', 'Vercel'],
     image:
-      'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80',
+    link: 'https://seaplatebangalore.in/',
   },
   {
-    title: 'Summit Studio',
-    type: 'Creative agency',
-    summary: 'Developed a portfolio platform with cinematic motion and editorial storytelling that elevated their positioning and case-study narrative.',
-    metric: '44%',
-    result: 'longer average engagement',
-    tags: ['Motion', 'Portfolio', 'Strategy'],
+    title: 'Akik Creations by HY',
+    type: 'Fashion / E-Commerce',
+    summary: 'Elegant e-commerce experience for kurti collections with a high-end brand feel, WhatsApp ordering flow, and smoother buying experience.',
+    metric: 'Orders',
+    result: 'started coming in quickly',
+    tags: ['E-Commerce', 'Stripe', 'Brand'],
     image:
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+    link: 'https://www.akikcreationsbyhy.com/',
+  },
+  {
+    title: 'Shenme',
+    type: 'Beauty & Salon',
+    summary: 'Modern salon website designed to showcase services, build trust, and increase appointment enquiries through a premium digital presence.',
+    metric: 'Enquiries',
+    result: 'clear uplift in bookings',
+    tags: ['Salon', 'UI/UX', 'Conversion'],
+    image:
+      'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80',
+    link: 'https://shenme.vercel.app',
   },
 ]
 
@@ -102,51 +117,100 @@ const implementationFlow = [
   {
     step: '01',
     title: 'Discover',
-    detail: 'We gather the story, the ambition, the audience, and the friction points.',
+    detail: 'We understand the business, the audience, and the exact friction points in the process.',
   },
   {
     step: '02',
-    title: 'Design',
-    detail: 'We shape the experience system, visual language, and brand motion.',
+    title: 'Strategize',
+    detail: 'We map the roadmap, system architecture, and growth opportunities before design begins.',
   },
   {
     step: '03',
-    title: 'Build',
-    detail: 'We design the product experience and deploy the right systems at scale.',
+    title: 'Design',
+    detail: 'We shape the visual system, product flow, and brand motion for a premium digital experience.',
   },
   {
     step: '04',
-    title: 'Refine',
-    detail: 'We tune conversion, clarity, performance, and long-term growth momentum.',
+    title: 'Build',
+    detail: 'We engineer, integrate, and test the product so it runs cleanly and scales with confidence.',
+  },
+  {
+    step: '05',
+    title: 'Launch & Automate',
+    detail: 'We deploy the experience and connect intelligent workflows that keep the business moving.',
   },
 ]
 
-const automationFlow = [
-  { label: 'Brief', sub: 'Signals', color: 'sand', status: 'Live intake' },
-  { label: 'Research', sub: 'Insights', color: 'mist', status: 'Context mapped' },
-  { label: 'Design', sub: 'System', color: 'lavender', status: 'Brand in motion' },
-  { label: 'Build', sub: 'Product', color: 'sand', status: 'Experience live' },
-  { label: 'Automate', sub: 'Ops', color: 'mist', status: 'Flow deployed' },
-  { label: 'Launch', sub: 'Scale', color: 'lavender', status: 'Growth active' },
+const automationPipelines = [
+  {
+    id: 'lead-management',
+    label: 'Lead Management',
+    description: 'Website Lead → AI Qualification → CRM Entry → Sales Notification → Follow-up',
+    steps: [
+      { name: 'Website Lead', tone: 'amber' },
+      { name: 'AI Qualification', tone: 'gold' },
+      { name: 'CRM Entry', tone: 'lavender' },
+      { name: 'Sales Notification', tone: 'steel' },
+      { name: 'Follow-up', tone: 'amber' },
+    ],
+  },
+  {
+    id: 'customer-support',
+    label: 'Customer Support',
+    description: 'Customer Message → AI Agent → Knowledge Base → Instant Response → Escalation',
+    steps: [
+      { name: 'Customer Message', tone: 'amber' },
+      { name: 'AI Agent', tone: 'gold' },
+      { name: 'Knowledge Base', tone: 'lavender' },
+      { name: 'Instant Response', tone: 'steel' },
+      { name: 'Escalation', tone: 'amber' },
+    ],
+  },
+  {
+    id: 'document-processing',
+    label: 'Document Processing',
+    description: 'Document Upload → AI Extraction → Validation → Database Entry → Action Trigger',
+    steps: [
+      { name: 'Document Upload', tone: 'amber' },
+      { name: 'AI Extraction', tone: 'gold' },
+      { name: 'Validation', tone: 'lavender' },
+      { name: 'Database Entry', tone: 'steel' },
+      { name: 'Action Trigger', tone: 'amber' },
+    ],
+  },
+  {
+    id: 'appointment-booking',
+    label: 'Appointment Booking',
+    description: 'Customer Request → AI Assistant → Check Availability → Auto Booking → Reminder',
+    steps: [
+      { name: 'Customer Request', tone: 'amber' },
+      { name: 'AI Assistant', tone: 'gold' },
+      { name: 'Check Availability', tone: 'lavender' },
+      { name: 'Auto Booking', tone: 'steel' },
+      { name: 'Reminder', tone: 'amber' },
+    ],
+  },
+  {
+    id: 'business-reporting',
+    label: 'Business Reporting',
+    description: 'Business Data → AI Analysis → Generate Insights → Automated Report → Team Action',
+    steps: [
+      { name: 'Business Data', tone: 'amber' },
+      { name: 'AI Analysis', tone: 'gold' },
+      { name: 'Generate Insights', tone: 'lavender' },
+      { name: 'Automated Report', tone: 'steel' },
+      { name: 'Team Action', tone: 'amber' },
+    ],
+  },
 ]
 
 const capabilityCards = [
-  {
-    title: 'Brand experiences',
-    text: 'We build identity systems, landing pages, and digital storytelling that feel premium, trustworthy, and emotionally memorable.',
-  },
-  {
-    title: 'AI & automation',
-    text: 'From lead capture to sales support and internal automation, we design systems that save time without making the business feel robotic.',
-  },
-  {
-    title: 'Product engineering',
-    text: 'We create scalable web products and custom platforms that balance speed, structure, and long-term flexibility.',
-  },
-  {
-    title: 'Growth design',
-    text: 'Every digital touchpoint is shaped to be clear, persuasive, and conversion-aware so it helps the business grow in real time.',
-  },
+  { title: 'Web Development', text: 'Modern, responsive and conversion-focused websites engineered for performance, scalability and exceptional user experience.' },
+  { title: 'AI Automation', text: 'Automate repetitive business processes with intelligent AI-powered workflows that reduce manual effort and improve operational efficiency.' },
+  { title: 'Custom Software', text: 'Purpose-built software designed around your exact business requirements, from internal tools to full digital platforms.' },
+  { title: 'AI-Powered Solutions', text: 'Integrate modern AI capabilities into your existing products, operations and customer experiences with practical business impact.' },
+  { title: 'E-Commerce Development', text: 'High-converting storefronts and systems built for product discovery, payment flows, order management and growth.' },
+  { title: 'System Integration', text: 'Connect your business tools, APIs and data into one intelligent digital ecosystem that runs smoothly and efficiently.' },
 ]
 
 const fireflies = [
@@ -166,6 +230,9 @@ export default function Home() {
   const stickyRef = useRef<HTMLElement | null>(null)
   const animationRef = useRef<number | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [activeWorkflow, setActiveWorkflow] = useState(automationPipelines[0].id)
+
+  const activeWorkflowData = automationPipelines.find((item) => item.id === activeWorkflow) ?? automationPipelines[0]
 
   useEffect(() => {
     const node = stickyRef.current
@@ -212,14 +279,17 @@ export default function Home() {
 
         <nav className="top-nav" aria-label="Main navigation">
           <a href="#home">Home</a>
-          <a href="#experience">Experience</a>
+          <a href="#services">Services</a>
+          <a href="#solutions">Solutions</a>
           <a href="#work">Work</a>
+          <a href="#testimonials">Clients</a>
           <a href="#process">Process</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
 
         <a href="#contact" className="primary-btn nav-button">
-          Let&apos;s talk
+          Start a project
           <FiArrowRight />
         </a>
       </header>
@@ -249,23 +319,23 @@ export default function Home() {
             <div className="hero-copy">
               <span className="eyebrow">
                 <FiSun />
-                calm technology, elevated experiences
+                Build Digital. Automate Intelligently.
               </span>
 
               <h1>
-                We shape <span>quietly magnetic</span> digital brands.
+                BUILD. <span>AUTOMATE.</span> SCALE.
               </h1>
 
               <p>
-                Vaseena Labs creates warm, considered brands and software experiences for founders who want clarity, presence, and measurable growth without the noise.
+                We build high-performance digital experiences and AI-powered automation systems that help businesses work smarter.
               </p>
 
               <div className="cta-row">
                 <a href="#contact" className="primary-btn">
-                  Start your story
+                  Start a project
                   <FiArrowRight />
                 </a>
-                <a href="#experience" className="secondary-btn">
+                <a href="#solutions" className="secondary-btn">
                   <FiPlay />
                   See the flow
                 </a>
@@ -331,13 +401,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="automation-showcase">
+        <section className="automation-showcase" id="solutions">
           <div className="panel-intro">
             <span className="eyebrow dark">
               <FiCompass />
-              business automation system
+              AI automation workflows
             </span>
-            <h2>Built like a live operating engine for growth.</h2>
+            <h2>Turn repetitive work into intelligent systems.</h2>
           </div>
 
           <div className="automation-flow-panel glass-panel">
@@ -346,54 +416,67 @@ export default function Home() {
               live enterprise workflow
             </div>
 
-            <div className="automation-architecture" aria-label="Business automation workflow diagram">
-              <svg className="automation-svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <path className="flow-path path-1" d="M 210 200 C 300 205, 360 220, 470 255" />
-                <path className="flow-path path-2" d="M 250 420 C 330 380, 390 345, 455 325" />
-                <path className="flow-path path-3" d="M 520 142 C 560 175, 585 180, 610 200" />
-                <path className="flow-path path-4" d="M 890 175 C 800 165, 730 182, 685 225" />
-                <path className="flow-path path-5" d="M 910 390 C 820 390, 715 360, 650 340" />
-                <path className="flow-path path-6" d="M 640 430 C 610 440, 570 435, 540 400" />
+            <div className="workflow-tabs" aria-label="Automation pipeline tabs">
+              {automationPipelines.map((pipeline) => (
+                <button
+                  key={pipeline.id}
+                  type="button"
+                  className={`workflow-tab ${activeWorkflow === pipeline.id ? 'active' : ''}`}
+                  onClick={() => setActiveWorkflow(pipeline.id)}
+                  aria-pressed={activeWorkflow === pipeline.id}
+                >
+                  {pipeline.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="workflow-flowchart" aria-live="polite">
+              <svg className="workflow-svg" viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path d="M 100 120 C 210 55, 280 55, 360 120 S 515 195, 585 120 S 760 50, 900 120" />
               </svg>
 
-              <div className="system-glow" />
-              <div className="orbit orbit-one" />
-              <div className="orbit orbit-two" />
-              <div className="pulse-ring pulse-ring-one" />
-              <div className="pulse-ring pulse-ring-two" />
-
-              <div className="system-core">
-                <span>AI orchestration</span>
-                <strong>Business engine</strong>
+              <div className="workflow-flow" role="list">
+                {activeWorkflowData.steps.map((step, index) => (
+                  <div
+                    className="workflow-step"
+                    key={`${activeWorkflowData.id}-${step.name}`}
+                    role="listitem"
+                    style={{
+                      left: `${7 + index * 22}%`,
+                      top: `${index % 2 === 0 ? 52 : 36}%`,
+                    }}
+                  >
+                    <div className={`workflow-node tone-${step.tone}`}>
+                      <span>{index + 1}</span>
+                      <strong>{step.name}</strong>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {automationFlow.map((node, index) => (
-                <div key={node.label} className={`automation-node node-${index + 1} ${node.color} ${index === 3 ? 'active' : ''}`}>
-                  <span className="node-rank">0{index + 1}</span>
-                  <div className="node-copy">
-                    <strong>{node.label}</strong>
-                    <small>{node.sub}</small>
-                  </div>
-                  <span className="node-status">{node.status}</span>
-                </div>
-              ))}
+              <div className="workflow-particle" aria-hidden="true" />
+
+              <div className="workflow-summary">
+                <span className="summary-label">Automation Blueprint</span>
+                <strong>{activeWorkflowData.description}</strong>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="content-panel">
+        <section className="content-panel" id="services">
           <div className="panel-intro">
             <span className="eyebrow dark">
               <FiCompass />
               what we do
             </span>
-            <h2>We turn ambition into calm, modern momentum.</h2>
+            <h2>Custom digital systems built for modern growth.</h2>
           </div>
 
           <div className="capability-grid">
-            {capabilityCards.map((card) => (
+            {capabilityCards.map((card, index) => (
               <article className="capability-card glass-panel" key={card.title}>
-                <div className="capability-number">0{capabilityCards.indexOf(card) + 1}</div>
+                <div className="capability-number">0{index + 1}</div>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
               </article>
@@ -451,7 +534,7 @@ export default function Home() {
           <div className="panel-intro">
             <span className="eyebrow dark">
               <FiLayers />
-              live implementation flow
+              5-step execution model
             </span>
             <h2>From idea to launch, shaped with intention.</h2>
           </div>
@@ -505,40 +588,65 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <div className="case-footer">
-                    <span>View story</span>
+                  <a href={study.link} target="_blank" rel="noreferrer" className="case-footer">
+                    <span>Visit site</span>
                     <FiArrowRight />
-                  </div>
+                  </a>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="detail-panel">
+        <section className="detail-panel" id="about">
           <div className="panel-intro">
             <span className="eyebrow dark">
               <FiLayers />
-              built for momentum
+              why vaseena labs
             </span>
-            <h2>Quiet confidence, measurable growth.</h2>
+            <h2>Business-first technology with a modern design mind.</h2>
           </div>
 
           <div className="detail-grid">
             <article className="detail-box glass-panel">
               <FiMoon />
-              <h3>Immersive storytelling</h3>
-              <p>Every scroll, section, and interaction is designed to carry feeling with clarity.</p>
+              <h3>Business-first technology</h3>
+              <p>Every technical decision is designed to support a real business outcome, not just aesthetics.</p>
             </article>
             <article className="detail-box glass-panel">
               <FiFeather />
-              <h3>Design systems</h3>
-              <p>Distinctive visuals with consistency across product, web, and brand touchpoints.</p>
+              <h3>Modern engineering</h3>
+              <p>We build with production-ready systems, scalable architecture, and a clean experience that feels premium.</p>
             </article>
             <article className="detail-box glass-panel">
               <FiCompass />
-              <h3>Conversion strategy</h3>
-              <p>Brand energy meets performance, letting the experience do the selling naturally.</p>
+              <h3>AI-first mindset</h3>
+              <p>Automation and AI are integrated early so your operations become faster, smarter, and easier to scale.</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="testimonial-section" id="testimonials">
+          <div className="panel-intro">
+            <span className="eyebrow dark">
+              <FiStar />
+              client testimonials
+            </span>
+            <h2>Businesses that wanted better digital experiences.</h2>
+          </div>
+
+          <div className="testimonial-grid">
+            <article className="testimonial-card glass-panel">
+              <p>&ldquo;Guests compliment us on the website before they even walk through our doors.&rdquo;</p>
+              <strong>Vasundhara Palace Bangalore</strong>
+            </article>
+            <article className="testimonial-card glass-panel">
+              <p>&ldquo;Reservation enquiries have gone up noticeably after launch.&rdquo;</p>
+              <strong>SeaPlate Bangalore</strong>
+            </article>
+            <article className="testimonial-card glass-panel">
+              <p>&ldquo;Orders started coming in within days of the launch.&rdquo;</p>
+              <strong>Akik Creations by HY</strong>
             </article>
           </div>
         </section>
@@ -570,9 +678,9 @@ export default function Home() {
                 <FiMessageCircle />
                 let&apos;s build something memorable
               </span>
-              <h2>Your next digital chapter starts here.</h2>
+              <h2>READY TO BUILD SOMETHING INTELLIGENT?</h2>
               <p className="cta-copy">
-                We help founders, creators, and modern businesses turn ideas into premium digital experiences that feel human, elegant, and highly effective.
+                Tell us what you&apos;re building, and let&apos;s turn your idea into a powerful digital product or intelligent automated system.
               </p>
             </div>
 
