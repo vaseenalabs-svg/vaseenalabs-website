@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import {
   FiArrowRight,
@@ -231,8 +232,21 @@ export default function Home() {
   const animationRef = useRef<number | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [activeWorkflow, setActiveWorkflow] = useState(automationPipelines[0].id)
+  const [workflowStage, setWorkflowStage] = useState(0)
 
   const activeWorkflowData = automationPipelines.find((item) => item.id === activeWorkflow) ?? automationPipelines[0]
+
+  useEffect(() => {
+    setWorkflowStage(0)
+  }, [activeWorkflow])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWorkflowStage((current) => (current >= activeWorkflowData.steps.length - 1 ? 0 : current + 1))
+    }, 1800)
+
+    return () => clearInterval(interval)
+  }, [activeWorkflowData])
 
   useEffect(() => {
     const node = stickyRef.current
@@ -431,34 +445,48 @@ export default function Home() {
             </div>
 
             <div className="workflow-flowchart" aria-live="polite">
-              <svg className="workflow-svg" viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <path d="M 100 120 C 210 55, 280 55, 360 120 S 515 195, 585 120 S 760 50, 900 120" />
-              </svg>
-
-              <div className="workflow-flow" role="list">
-                {activeWorkflowData.steps.map((step, index) => (
-                  <div
-                    className="workflow-step"
-                    key={`${activeWorkflowData.id}-${step.name}`}
-                    role="listitem"
-                    style={{
-                      left: `${7 + index * 22}%`,
-                      top: `${index % 2 === 0 ? 52 : 36}%`,
-                    }}
-                  >
-                    <div className={`workflow-node tone-${step.tone}`}>
-                      <span>{index + 1}</span>
-                      <strong>{step.name}</strong>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="workflow-particle" aria-hidden="true" />
-
               <div className="workflow-summary">
                 <span className="summary-label">Automation Blueprint</span>
                 <strong>{activeWorkflowData.description}</strong>
+              </div>
+
+              <div className="workflow-timeline" role="list" aria-label={`${activeWorkflowData.label} automation steps`}>
+                {activeWorkflowData.steps.map((step, index) => {
+                  const isActive = index === workflowStage
+                  const isDone = index < workflowStage
+
+                  return (
+                    <motion.div
+                      key={`${activeWorkflowData.id}-${step.name}`}
+                      role="listitem"
+                      className={`timeline-item ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`}
+                      initial={{ opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, delay: index * 0.08 }}
+                    >
+                      <div className="timeline-rail" aria-hidden="true">
+                        <span className="timeline-dot" />
+                      </div>
+
+                      <div className={`timeline-card tone-${step.tone}`}>
+                        <div className="timeline-header">
+                          <span className="timeline-step">0{index + 1}</span>
+                          <span className="timeline-status">
+                            {isActive ? 'Live' : isDone ? 'Done' : 'Queued'}
+                          </span>
+                        </div>
+                        <h3>{step.name}</h3>
+                        <p>
+                          {isActive
+                            ? 'This step is currently processing and moving data through the pipeline.'
+                            : isDone
+                              ? 'This phase has been completed and handed off to the next stage.'
+                              : 'The workflow is waiting to move to the next stage in sequence.'}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -627,11 +655,14 @@ export default function Home() {
         </section>
 
         <section className="testimonial-section" id="testimonials">
-          <div className="panel-intro">
+          <div className="panel-intro testimonial-intro">
             <span className="eyebrow dark">
               <FiStar />
               client testimonials
             </span>
+          </div>
+
+          <div className="headline-row">
             <h2>Businesses that wanted better digital experiences.</h2>
           </div>
 
@@ -685,7 +716,7 @@ export default function Home() {
             </div>
 
             <div className="contact-actions">
-              <a href="mailto:vaseenalabs@gmail.com" className="primary-btn action-btn">
+              <a href="mailto:hello@vaseenalabs.com" className="primary-btn action-btn">
                 <FiMail />
                 hello@vaseenalabs.com
               </a>

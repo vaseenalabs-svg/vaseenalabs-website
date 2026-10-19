@@ -11,7 +11,7 @@ export const siteConfig = {
   url: 'https://vaseenalabs.com',
 
   contact: {
-    email: 'vaseenalabs@gmail.com',
+    email: 'hello@vaseenalabs.com',
     phone: '+91 97381 76663',
     phoneRaw: '+919738176663',
     instagram: 'https://www.instagram.com/vaseena_labs/',
