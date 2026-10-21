@@ -1241,45 +1241,54 @@ header {
 }
 
 .flow-section {
-  max-width: 1280px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  padding: 4rem clamp(1rem, 2vw, 2rem) 0;
+  padding: 1.5rem 0 0;
 }
 
 .flow-intro {
-  margin-bottom: 2rem;
+  max-width: 1280px;
+  margin: 0 auto 1.25rem;
+  padding: 0 clamp(1rem, 2vw, 2rem);
 }
 
 .stack-card-deck {
   position: relative;
-  width: min(92%, 980px);
-  height: 920px;
-  margin: 0 auto;
-  perspective: 1600px;
+  width: 100%;
+  height: clamp(540px, 66vh, 700px);
+  margin: 0;
+  padding: 0 clamp(0.75rem, 1.6vw, 1.5rem);
+  perspective: 2200px;
+  transform-style: preserve-3d;
+  overflow: visible;
+  isolation: isolate;
 }
 
 .stack-card {
   position: absolute;
-  left: 50%;
+  left: clamp(0.4rem, 0.8vw, 1rem);
+  right: clamp(0.4rem, 0.8vw, 1rem);
   top: 0;
-  width: min(100%, 820px);
-  min-height: 260px;
-  padding: 1.1rem 1.25rem 1.4rem;
+  width: auto;
+  min-height: 230px;
+  padding: 1.1rem 1.2rem 1.3rem;
   border-radius: 2rem;
   border: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(180deg, rgba(39,35,32,0.98), rgba(20,18,16,0.96));
+  background: linear-gradient(120deg, rgba(193,188,180,0.78), rgba(99,95,90,0.86) 24%, rgba(17,17,19,0.95) 70%);
   box-shadow: 0 26px 54px rgba(15,12,10,0.18);
-  transform-origin: center top;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  overflow: hidden;
+  transform-origin: center center;
   will-change: transform, opacity;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease, box-shadow 0.45s ease, border-color 0.45s ease;
 }
 
 .stack-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(244,212,157,0.08), rgba(171, 137, 227, 0.04), transparent 58%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04) 20%, rgba(244,212,157,0.06) 42%, transparent 60%);
   pointer-events: none;
 }
 
@@ -1298,15 +1307,22 @@ header {
 }
 
 .stack-card.active {
-  border-color: rgba(244,212,157,0.3);
-  box-shadow: 0 32px 72px rgba(15,12,10,0.22);
+  border-color: rgba(244,212,157,0.52);
+  background: linear-gradient(120deg, rgba(193,188,180,0.9), rgba(89,87,82,0.9) 26%, rgba(15,13,13,0.98) 72%);
+  box-shadow: 0 0 0 1px rgba(244,212,157,0.16), 0 34px 120px rgba(5,4,4,0.6), 0 0 80px rgba(244,212,157,0.18), inset 0 0 52px rgba(244,212,157,0.07);
+}
+
+.stack-card.active::before {
+  background: radial-gradient(circle at 18% 8%, rgba(255,255,255,0.2), transparent 18%),
+    radial-gradient(circle at 80% 68%, rgba(146,121,180,0.14), transparent 26%),
+    linear-gradient(135deg, rgba(244,212,157,0.12), rgba(171,137,227,0.08), transparent 62%);
 }
 
 .stack-card-main {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 0.9rem;
   margin-bottom: 0.9rem;
@@ -1342,20 +1358,24 @@ header {
 .stack-card h3 {
   position: relative;
   z-index: 1;
-  margin: 0 0 0.9rem;
-  font-size: clamp(2.2rem, 2.3vw, 3.1rem);
-  line-height: 0.96;
-  letter-spacing: -0.07em;
+  margin: 0 0 0;
+  font-size: clamp(2.4rem, 3vw, 5rem);
+  line-height: 0.86;
+  letter-spacing: -0.08em;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  color: rgba(255,255,255,0.96);
+  color: rgba(255,255,255,0.97);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  max-width: 76%;
+  text-align: right;
+  margin-left: auto;
 }
 
 .stack-card p {
   position: relative;
   z-index: 1;
   margin: 0;
-  max-width: 34rem;
-  color: rgba(255,255,255,0.72);
+  max-width: 30rem;
+  color: rgba(255,255,255,0.8);
   line-height: 1.68;
   font-size: 1.04rem;
 }
@@ -1368,22 +1388,31 @@ header {
 
 @media (max-width: 780px) {
   .stack-card-deck {
-    width: min(96vw, 620px);
-    height: 760px;
+    height: 560px;
+    padding: 0 0.9rem;
   }
 
   .stack-card {
-    width: min(100%, 560px);
-    min-height: 220px;
+    left: 0.9rem;
+    right: 0.9rem;
+    min-height: 210px;
     padding: 1rem 1rem 1.1rem;
     border-radius: 1.5rem;
   }
 
+  .stack-card-main {
+    align-items: center;
+  }
+
   .stack-card h3 {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    font-size: clamp(1.8rem, 7vw, 2.7rem);
+    max-width: 100%;
+    text-align: left;
+    margin-left: 0;
   }
 
   .stack-card p {
+    max-width: 100%;
     font-size: 0.98rem;
   }
 }
@@ -1418,13 +1447,14 @@ header {
   }
 
   .stack-card-deck {
-    width: min(94vw, 560px);
-    height: 660px;
+    height: 500px;
+    padding: 0 0.75rem;
   }
 
   .stack-card {
-    width: 100%;
-    min-height: 190px;
+    left: 0.75rem;
+    right: 0.75rem;
+    min-height: 180px;
     padding: 0.9rem 0.9rem 1rem;
     border-radius: 1.35rem;
   }

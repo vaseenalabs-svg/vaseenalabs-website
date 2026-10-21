@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import {
   FiArrowRight,
   FiCheck,
@@ -234,7 +235,7 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [activeWorkflow, setActiveWorkflow] = useState(automationPipelines[0].id)
   const [workflowStage, setWorkflowStage] = useState(0)
-  const [activeStackIndex, setActiveStackIndex] = useState(0)
+  const [stackProgress, setStackProgress] = useState(0)
 
   const activeWorkflowData = automationPipelines.find((item) => item.id === activeWorkflow) ?? automationPipelines[0]
 
@@ -287,16 +288,21 @@ export default function Home() {
     const node = flowDeckRef.current
     if (!node) return
 
+    let frameId = 0
+
     const updateStack = () => {
       const rect = node.getBoundingClientRect()
-      const total = Math.max(node.offsetHeight - window.innerHeight * 0.7, 1)
-      const progress = Math.min(Math.max((window.innerHeight * 0.25 - rect.top) / total, 0), 1)
-      const activeIndex = Math.min(implementationFlow.length - 1, Math.round(progress * (implementationFlow.length - 1)))
-      setActiveStackIndex(activeIndex)
+      const total = Math.max(node.offsetHeight - window.innerHeight * 0.75, 1)
+      const progress = Math.min(Math.max((window.innerHeight * 0.55 - rect.top) / total, 0), 1)
+      setStackProgress(progress)
     }
 
     const onScroll = () => {
-      window.requestAnimationFrame(updateStack)
+      if (frameId) return
+      frameId = window.requestAnimationFrame(() => {
+        updateStack()
+        frameId = 0
+      })
     }
 
     updateStack()
@@ -306,6 +312,9 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
     }
   }, [])
 
@@ -592,39 +601,35 @@ export default function Home() {
               <FiLayers />
               5-step execution model
             </span>
-            <h2>From idea to launch, shaped with intention.</h2>
+            {/* <h2>From idea to launch, shaped with intention.</h2> */}
           </div>
 
-          <div className="stack-card-deck" ref={flowDeckRef} aria-label="Project delivery stack cards">
-            {implementationFlow.map((item, index) => {
-              const offset = index - activeStackIndex
-              const isActive = index === activeStackIndex
-              const shiftY = offset * 78
-              const shiftX = offset * 12
-              const scale = 1 - Math.abs(offset) * 0.06
-              const opacity = Math.max(0.28, 1 - Math.abs(offset) * 0.28)
-              const rotate = offset * 1.1
-
-              return (
-                <article
-                  key={item.step}
-                  className={`stack-card ${isActive ? 'active' : ''}`}
-                  style={{
-                    transform: `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale}) rotate(${rotate}deg)`,
-                    opacity,
-                    zIndex: implementationFlow.length - Math.abs(offset),
-                  }}
-                >
-                  <div className="stack-card-main">
-                    <div className="stack-card-tag">{item.step}</div>
-                    <div className="stack-card-shape" aria-hidden="true" />
-                    <h3>{item.title}</h3>
+          <ContainerScroll
+            titleComponent={
+              <div className="mx-auto max-w-6xl px-4 text-center" aria-hidden="true">
+                <h3 className="text-[2.5rem] font-semibold tracking-[-0.08em] text-[#1f2328] sm:text-[4rem] md:text-[6rem]">
+                  From idea to launch, <span className="text-[#5a5c61]">shaped with intention.</span>
+                </h3>
+              </div>
+            }
+          >
+            <div className="flex h-full w-full flex-col justify-center rounded-[1.8rem] bg-[#111214]/95 p-4 text-left text-white md:p-8">
+              <div className="grid gap-3 md:grid-cols-5">
+                {implementationFlow.map((item) => (
+                  <div
+                    key={item.step}
+                    className="rounded-[1.4rem] border border-white/10 bg-white/5 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-4"
+                  >
+                    <div className="mb-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#f2d6a3]">
+                      {item.step}
+                    </div>
+                    <div className="mb-3 text-xl font-medium text-white md:text-2xl">{item.title}</div>
+                    <p className="text-sm leading-6 text-slate-200/80 md:text-[0.95rem]">{item.detail}</p>
                   </div>
-                  <p>{item.detail}</p>
-                </article>
-              )
-            })}
-          </div>
+                ))}
+              </div>
+            </div>
+          </ContainerScroll>
         </section>
 
         <section className="case-study-section" id="work">
