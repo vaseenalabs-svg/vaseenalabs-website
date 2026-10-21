@@ -229,12 +229,12 @@ const fireflies = [
 
 export default function Home() {
   const stickyRef = useRef<HTMLElement | null>(null)
+  const flowDeckRef = useRef<HTMLDivElement | null>(null)
   const animationRef = useRef<number | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [activeWorkflow, setActiveWorkflow] = useState(automationPipelines[0].id)
   const [workflowStage, setWorkflowStage] = useState(0)
   const [activeStackIndex, setActiveStackIndex] = useState(0)
-  const stackDeckRef = useRef<HTMLDivElement | null>(null)
 
   const activeWorkflowData = automationPipelines.find((item) => item.id === activeWorkflow) ?? automationPipelines[0]
 
@@ -284,28 +284,28 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const node = stackDeckRef.current
+    const node = flowDeckRef.current
     if (!node) return
 
-    const updateDeck = () => {
+    const updateStack = () => {
       const rect = node.getBoundingClientRect()
-      const scrollable = Math.max(node.offsetHeight - window.innerHeight * 0.8, 1)
-      const progress = Math.min(Math.max((window.innerHeight * 0.4 - rect.top) / scrollable, 0), 1)
-      const nextIndex = Math.min(implementationFlow.length - 1, Math.round(progress * (implementationFlow.length - 1)))
-      setActiveStackIndex(nextIndex)
+      const total = Math.max(node.offsetHeight - window.innerHeight * 0.7, 1)
+      const progress = Math.min(Math.max((window.innerHeight * 0.25 - rect.top) / total, 0), 1)
+      const activeIndex = Math.min(implementationFlow.length - 1, Math.round(progress * (implementationFlow.length - 1)))
+      setActiveStackIndex(activeIndex)
     }
 
-    const handleScroll = () => {
-      window.requestAnimationFrame(updateDeck)
+    const onScroll = () => {
+      window.requestAnimationFrame(updateStack)
     }
 
-    updateDeck()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    updateStack()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
     }
   }, [])
 
@@ -595,27 +595,31 @@ export default function Home() {
             <h2>From idea to launch, shaped with intention.</h2>
           </div>
 
-          <div className="stack-card-deck" ref={stackDeckRef} aria-label="Project delivery stack cards">
+          <div className="stack-card-deck" ref={flowDeckRef} aria-label="Project delivery stack cards">
             {implementationFlow.map((item, index) => {
               const offset = index - activeStackIndex
               const isActive = index === activeStackIndex
-              const lift = Math.max(0, offset) * 26
-              const scale = 1 - Math.abs(offset) * 0.07
-              const opacity = 1 - Math.abs(offset) * 0.22
+              const shiftY = offset * 78
+              const shiftX = offset * 12
+              const scale = 1 - Math.abs(offset) * 0.06
+              const opacity = Math.max(0.28, 1 - Math.abs(offset) * 0.28)
+              const rotate = offset * 1.1
 
               return (
                 <article
                   key={item.step}
                   className={`stack-card ${isActive ? 'active' : ''}`}
                   style={{
-                    transform: `translate3d(${offset * 22}px, ${-lift}px, 0) scale(${scale})`,
+                    transform: `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale}) rotate(${rotate}deg)`,
                     opacity,
                     zIndex: implementationFlow.length - Math.abs(offset),
                   }}
                 >
-                  <div className="stack-card-tag">{item.step}</div>
-                  <div className="stack-card-shape" aria-hidden="true" />
-                  <h3>{item.title}</h3>
+                  <div className="stack-card-main">
+                    <div className="stack-card-tag">{item.step}</div>
+                    <div className="stack-card-shape" aria-hidden="true" />
+                    <h3>{item.title}</h3>
+                  </div>
                   <p>{item.detail}</p>
                 </article>
               )
