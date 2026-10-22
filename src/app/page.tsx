@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
+import ThreeDCardDemo from '@/components/3d-card-demo'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import {
   FiArrowRight,
@@ -418,35 +419,8 @@ export default function Home() {
             </div>
 
             <div className="hero-visual">
-              <div className="video-panel glass-panel">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="hero-video"
-                  poster="/images/placeholder.jpg"
-                >
-                  <source src="/videos/desktop_hero_background.mp4" type="video/mp4" />
-                </video>
-                <div className="video-overlay" />
-
-                <div className="mini-card card-top">
-                  <FiStar />
-                  <div>
-                    <small>Brand design</small>
-                    <strong>Quiet luxury</strong>
-                  </div>
-                </div>
-
-                <div className="mini-card card-bottom">
-                  <FiMessageCircle />
-                  <div>
-                    <small>Client energy</small>
-                    <strong>Warm + premium</strong>
-                  </div>
-                </div>
+              <div className="video-panel">
+                <ThreeDCardDemo />
               </div>
             </div>
           </div>
