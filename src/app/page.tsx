@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import ThreeDCardDemo from '@/components/3d-card-demo'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import {
   FiArrowRight,
@@ -679,32 +680,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="testimonial-section" id="testimonials">
-          <div className="panel-intro testimonial-intro">
-            <span className="eyebrow dark">
-              <FiStar />
-              client testimonials
-            </span>
-          </div>
-
-          <div className="headline-row">
-            <h2>Businesses that wanted better digital experiences.</h2>
-          </div>
-
-          <div className="testimonial-grid">
-            <article className="testimonial-card glass-panel">
-              <p>&ldquo;Guests compliment us on the website before they even walk through our doors.&rdquo;</p>
-              <strong>Vasundhara Palace Bangalore</strong>
-            </article>
-            <article className="testimonial-card glass-panel">
-              <p>&ldquo;Reservation enquiries have gone up noticeably after launch.&rdquo;</p>
-              <strong>SeaPlate Bangalore</strong>
-            </article>
-            <article className="testimonial-card glass-panel">
-              <p>&ldquo;Orders started coming in within days of the launch.&rdquo;</p>
-              <strong>Akik Creations by HY</strong>
-            </article>
-          </div>
+        <section id="testimonials">
+          <TestimonialsSection />
         </section>
 
         <section className="process-section" id="process">
