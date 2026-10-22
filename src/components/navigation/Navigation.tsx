@@ -46,19 +46,16 @@ export default function Navigation() {
               className="flex items-center gap-2.5 group"
               aria-label="Vaseena Labs — Home"
             >
-              <div className="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10 group-hover:ring-primary/50 transition-all duration-300">
+              <div className="w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/10 group-hover:ring-primary/50 transition-all duration-300 bg-white/5">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/Vaseena%20Labs%20Main%20Logo.png"
                   alt="Vaseena Labs"
-                  width={36}
-                  height={36}
-                  className="object-cover"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
                   priority
                 />
               </div>
-              <span className="font-display font-700 text-[1.05rem] tracking-tight text-white group-hover:text-primary-light transition-colors duration-300">
-                Vaseena <span className="text-primary">Labs</span>
-              </span>
             </a>
 
             {/* Desktop nav */}

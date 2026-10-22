@@ -29,21 +29,18 @@ export default function Footer() {
             <a
               href="#home"
               onClick={(e) => { e.preventDefault(); handleNav('#home') }}
-              className="flex items-center gap-2.5 mb-4 w-fit group"
+              className="mb-4 flex w-fit items-center gap-2.5 group"
               aria-label="Vaseena Labs"
             >
-              <div className="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10">
+              <div className="h-10 w-10 overflow-hidden rounded-full bg-white/5 ring-1 ring-white/10">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/Vaseena%20Labs%20Main%20Logo.png"
                   alt="Vaseena Labs"
-                  width={36}
-                  height={36}
-                  className="object-cover"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-display font-bold text-base text-white">
-                Vaseena <span className="text-primary">Labs</span>
-              </span>
             </a>
             <p className="text-text-muted text-sm leading-relaxed max-w-xs mb-6">
               Building digital experiences.<br />

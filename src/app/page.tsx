@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import ThreeDCardDemo from '@/components/3d-card-demo'
+import TechnologySection from '@/components/sections/TechnologySection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import {
@@ -326,8 +327,11 @@ export default function Home() {
     <div className="page-shell">
       <header className="site-header">
         <div className="brand-mark">
-          <span className="brand-dot" />
-          Vaseena Labs
+          <img
+            src="/images/Vaseena%20Labs%20Main%20Logo.png"
+            alt="Vaseena Labs"
+            className="brand-logo"
+          />
         </div>
 
         <nav className="top-nav" aria-label="Main navigation">
@@ -679,6 +683,8 @@ export default function Home() {
             </article>
           </div>
         </section>
+
+        <TechnologySection />
 
         <section id="testimonials">
           <TestimonialsSection />

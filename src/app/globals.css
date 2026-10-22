@@ -160,19 +160,14 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  font-size: 0.94rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(29, 26, 23, 0.9);
 }
 
-.brand-dot {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #d6b387 0%, #b9a9cc 100%);
-  box-shadow: 0 0 18px rgba(214, 179, 135, 0.5);
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 18px rgba(27, 25, 24, 0.12));
 }
 
 .top-nav {
