@@ -169,14 +169,14 @@ export default function TechnologySection() {
           </h2>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-black/5 bg-[rgba(135,131,123,0.08)] p-2 shadow-[0_22px_70px_rgba(88,76,62,0.08)] backdrop-blur-md md:p-5">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),rgba(255,255,255,0.04)_40%,transparent_72%)]" />
+        <div className="relative overflow-hidden rounded-[2rem] border border-black/5 bg-[rgba(135,131,123,0.08)] p-4 shadow-[0_22px_70px_rgba(88,76,62,0.08)] backdrop-blur-md md:p-8">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22),rgba(255,255,255,0.04)_40%,transparent_72%)]" />
 
           <div className="hidden lg:block">
-            <div className="relative mx-auto h-[420px] w-full max-w-[700px] sm:h-[440px] xl:h-[470px]">
-              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] border border-black/5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),rgba(240,236,228,0.04)_42%,rgba(244,239,233,0.02)_100%)]" />
+            <div className="relative mx-auto h-[420px] w-full max-w-[760px] sm:h-[460px] xl:h-[500px]">
+              <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] border border-black/5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),rgba(240,236,228,0.06)_42%,rgba(244,239,233,0.02)_100%)]" />
 
-              <div className="absolute left-1/2 top-[52%] z-20 -translate-x-1/2 -translate-y-1/2 scale-[0.94] xl:scale-100">
+              <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
                 <IconCloud items={cloudItems} showControl={false} />
               </div>
 
@@ -187,7 +187,6 @@ export default function TechnologySection() {
                   style={{
                     left: group.position.left,
                     top: group.position.top,
-                    transform: 'translate(-50%, -50%)',
                   }}
                 >
                   <div className="mb-2 flex items-center gap-2">

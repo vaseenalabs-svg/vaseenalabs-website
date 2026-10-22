@@ -143,9 +143,9 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
       const z = Math.sin(phi) * r
 
       newIcons.push({
-        x: x * 86,
-        y: y * 86,
-        z: z * 86,
+        x: x * 100,
+        y: y * 100,
+        z: z * 100,
         scale: 1,
         opacity: 1,
         id: i,
@@ -266,21 +266,6 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
         }
       }
 
-      const glow = context.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        14,
-        canvas.width / 2,
-        canvas.height / 2,
-        170,
-      )
-      glow.addColorStop(0, 'rgba(96, 165, 250, 0.42)')
-      glow.addColorStop(0.28, 'rgba(168, 85, 247, 0.22)')
-      glow.addColorStop(0.6, 'rgba(15, 23, 42, 0.12)')
-      glow.addColorStop(1, 'rgba(15, 23, 42, 0)')
-      context.fillStyle = glow
-      context.fillRect(0, 0, canvas.width, canvas.height)
-
       iconPositions.forEach((icon, index) => {
         const cosX = Math.cos(rotationRef.current.x)
         const sinX = Math.sin(rotationRef.current.x)
@@ -291,12 +276,12 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
         const rotatedZ = icon.x * sinY + icon.z * cosY
         const rotatedY = icon.y * cosX + rotatedZ * sinX
 
-        const scale = (rotatedZ + 180) / 270
-        const opacity = Math.max(0.28, Math.min(1, (rotatedZ + 140) / 210))
+        const scale = (rotatedZ + 200) / 300
+        const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
 
         context.save()
         context.translate(canvas.width / 2 + rotatedX, canvas.height / 2 + rotatedY)
-        context.scale(scale * 1.12, scale * 1.12)
+        context.scale(scale, scale)
         context.globalAlpha = opacity
 
         const canvasIcon = iconCanvasesRef.current[index]
@@ -337,10 +322,6 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
         className="rounded-[1.5rem]"
-        style={{
-          boxShadow: '0 0 38px rgba(96,165,250,0.22), 0 0 70px rgba(168,85,247,0.12)',
-          filter: 'saturate(1.08)',
-        }}
         aria-label="Interactive technology cloud"
         role="img"
       />
