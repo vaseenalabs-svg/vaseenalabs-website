@@ -46,12 +46,12 @@ export default function Navigation() {
               className="flex items-center gap-2.5 group"
               aria-label="Vaseena Labs — Home"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/10 group-hover:ring-primary/50 transition-all duration-300 bg-white/5">
+              <div className="h-16 w-16 overflow-hidden rounded-full bg-white/5 ring-1 ring-white/10 transition-all duration-300 group-hover:ring-primary/50 sm:h-20 sm:w-20">
                 <Image
                   src="/images/Vaseena%20Labs%20Main%20Logo.png"
                   alt="Vaseena Labs"
-                  width={40}
-                  height={40}
+                  width={100}
+                  height={100}
                   className="h-full w-full object-contain"
                   priority
                 />

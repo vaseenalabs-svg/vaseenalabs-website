@@ -32,12 +32,12 @@ export default function Footer() {
               className="mb-4 flex w-fit items-center gap-2.5 group"
               aria-label="Vaseena Labs"
             >
-              <div className="h-10 w-10 overflow-hidden rounded-full bg-white/5 ring-1 ring-white/10">
+              <div className="h-14 w-14 overflow-hidden rounded-full bg-white/5 ring-1 ring-white/10 sm:h-16 sm:w-16">
                 <Image
                   src="/images/Vaseena%20Labs%20Main%20Logo.png"
                   alt="Vaseena Labs"
-                  width={40}
-                  height={40}
+                  width={64}
+                  height={64}
                   className="h-full w-full object-contain"
                 />
               </div>

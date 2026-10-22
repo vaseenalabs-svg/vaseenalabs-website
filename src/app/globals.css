@@ -163,11 +163,18 @@ header {
 }
 
 .brand-logo {
-  width: 52px;
-  height: 52px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 18px rgba(27, 25, 24, 0.12));
+  filter: drop-shadow(0 12px 24px rgba(27, 25, 24, 0.12));
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 74px;
+    height: 74px;
+  }
 }
 
 .top-nav {
