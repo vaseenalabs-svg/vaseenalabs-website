@@ -87,9 +87,9 @@ export default function TechnologySection() {
 
           <h2
             id="tech-heading"
-            className="text-3xl font-semibold tracking-[-0.06em] text-black md:text-5xl"
+            className="text-3xl font-semibold tracking-[-0.06em] text-white md:text-5xl"
           >
-            POWERED BY <span className="bg-gradient-to-r from-[#777674] via-[#aaafbe] to-[#a5b4fc] bg-clip-text text-transparent">MODERN TECHNOLOGY</span>
+            POWERED BY <span className="bg-gradient-to-r from-[#f7f1e5] via-[#d7d9df] to-[#a5b4fc] bg-clip-text text-transparent">MODERN TECHNOLOGY</span>
           </h2>
         </div>
 
