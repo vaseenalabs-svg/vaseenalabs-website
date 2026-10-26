@@ -56,6 +56,7 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
   const [isPaused, setIsPaused] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [canvasSize, setCanvasSize] = useState(420)
   const [targetRotation, setTargetRotation] = useState<{
     x: number
     y: number
@@ -71,6 +72,17 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
   const imagesLoadedRef = useRef<boolean[]>([])
 
   useEffect(() => {
+    const updateCanvasSize = () => {
+      const width = window.innerWidth
+      if (width < 480) setCanvasSize(260)
+      else if (width < 768) setCanvasSize(300)
+      else if (width < 1200) setCanvasSize(360)
+      else setCanvasSize(420)
+    }
+
+    updateCanvasSize()
+    window.addEventListener('resize', updateCanvasSize)
+
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (mediaQuery.matches) {
       setIsPaused(true)
@@ -81,7 +93,10 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
     }
 
     mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    return () => {
+      window.removeEventListener('resize', updateCanvasSize)
+      mediaQuery.removeEventListener('change', handleChange)
+    }
   }, [])
 
   useEffect(() => {
@@ -315,13 +330,13 @@ export function IconCloud({ items, showControl = true }: IconCloudProps) {
     <div className="relative inline-block">
       <canvas
         ref={canvasRef}
-        width={420}
-        height={420}
+        width={canvasSize}
+        height={canvasSize}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        className="rounded-[1.5rem]"
+        className="h-auto w-full max-w-[420px] rounded-[1.5rem]"
         aria-label="Interactive technology cloud"
         role="img"
       />

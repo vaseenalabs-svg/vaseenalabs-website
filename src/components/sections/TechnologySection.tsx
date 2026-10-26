@@ -152,14 +152,14 @@ export default function TechnologySection() {
       <div className="relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="mx-auto mb-8 max-w-5xl text-center md:mb-12">
           <div className="mb-5 flex justify-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/40 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#1b1a1d] shadow-[0_10px_25px_rgba(0,0,0,0.04)] backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/40 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#1b1a1d] shadow-[0_10px_25px_rgba(0,0,0,0.04)] backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[10px]">
               technology
             </span>
           </div>
 
           <h2
             id="tech-heading"
-            className="text-3xl font-black leading-[0.82] tracking-[-0.08em] text-[#141414] sm:text-5xl md:text-6xl lg:text-[5rem]"
+            className="text-[2.1rem] font-black leading-[0.8] tracking-[-0.08em] text-[#141414] sm:text-5xl md:text-6xl lg:text-[5rem]"
           >
             POWERED BY{' '}
             <span className="bg-gradient-to-r from-[#4b4b58] via-[#7c7b84] to-[#b5accf] bg-clip-text text-transparent">
@@ -169,11 +169,11 @@ export default function TechnologySection() {
           </h2>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-black/5 bg-[rgba(135,131,123,0.08)] p-4 shadow-[0_22px_70px_rgba(88,76,62,0.08)] backdrop-blur-md md:p-8">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-black/5 bg-[rgba(135,131,123,0.08)] p-3 shadow-[0_22px_70px_rgba(88,76,62,0.08)] backdrop-blur-md sm:rounded-[2rem] md:p-6 lg:p-8">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22),rgba(255,255,255,0.04)_40%,transparent_72%)]" />
 
           <div className="hidden lg:block">
-            <div className="relative mx-auto h-[420px] w-full max-w-[760px] sm:h-[460px] xl:h-[500px]">
+            <div className="relative mx-auto h-[360px] w-full max-w-[760px] md:h-[400px] xl:h-[500px]">
               <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] border border-black/5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),rgba(240,236,228,0.06)_42%,rgba(244,239,233,0.02)_100%)]" />
 
               <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
@@ -183,7 +183,7 @@ export default function TechnologySection() {
               {techGroups.map((group) => (
                 <div
                   key={group.label}
-                  className="absolute z-10 w-[180px] -translate-x-1/2 -translate-y-1/2 rounded-[1.2rem] border border-black/5 bg-[rgba(255,255,255,0.22)] p-3 shadow-[0_18px_36px_rgba(63,52,42,0.08)] backdrop-blur-sm sm:w-[200px] xl:w-[220px]"
+                  className="absolute z-10 w-[150px] -translate-x-1/2 -translate-y-1/2 rounded-[1.1rem] border border-black/5 bg-[rgba(255,255,255,0.22)] p-2.5 shadow-[0_18px_36px_rgba(63,52,42,0.08)] backdrop-blur-sm md:w-[170px] xl:w-[200px]"
                   style={{
                     left: group.position.left,
                     top: group.position.top,
@@ -194,7 +194,7 @@ export default function TechnologySection() {
                       className="h-2.5 w-2.5 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.7)]"
                       style={{ background: group.accent }}
                     />
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#1d1b1d] sm:text-[10px]">
+                    <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#1d1b1d] md:text-[9px] xl:text-[10px]">
                       {group.label}
                     </p>
                   </div>
@@ -203,7 +203,7 @@ export default function TechnologySection() {
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-black/5 bg-white/60 px-2 py-1 text-[9px] text-[#222226] sm:text-[10px]"
+                        className="rounded-full border border-black/5 bg-white/60 px-1.5 py-1 text-[8px] text-[#222226] md:text-[9px] xl:text-[10px]"
                       >
                         {item}
                       </span>
@@ -214,7 +214,7 @@ export default function TechnologySection() {
             </div>
           </div>
 
-          <div className="relative z-10 mt-8 grid gap-3 lg:hidden">
+          <div className="relative z-10 mt-8 grid gap-3 md:grid-cols-2 lg:hidden">
             {techGroups.map((group) => (
               <div
                 key={group.label}
@@ -230,7 +230,7 @@ export default function TechnologySection() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 ">
+                <div className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <span
                       key={item}
