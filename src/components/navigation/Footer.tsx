@@ -4,6 +4,9 @@ const fireflies = [
   { left: '12%', top: '18%', size: 7, delay: '0s' },
   { left: '74%', top: '30%', size: 9, delay: '2.4s' },
   { left: '52%', top: '74%', size: 8, delay: '1.3s' },
+  { left: '28%', top: '58%', size: 6, delay: '3.1s' },
+  { left: '86%', top: '68%', size: 7, delay: '4.2s' },
+  { left: '38%', top: '14%', size: 6, delay: '5s' },
 ]
 
 export default function Footer() {
@@ -30,7 +33,7 @@ export default function Footer() {
 
         <div>
           <div className="flex flex-col items-center text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-[#e2d5c8] bg-[#fffdfb] shadow-[0_12px_24px_rgba(90,72,50,0.12)] sm:h-20 sm:w-20">
+            <div className="mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-[#e2d5c8] bg-[#fffdfb] shadow-[0_12px_24px_rgba(90,72,50,0.12)] sm:h-20 sm:w-20">
               <Image
                 src="/images/Vaseena%20Labs%20Main%20Logo.png"
                 alt="Vaseena Labs"
@@ -39,14 +42,14 @@ export default function Footer() {
                 className="h-full w-full object-contain p-1"
               />
             </div>
-
+{/* 
             <a
               href="#"
               aria-label="Vaseena Labs"
               className="text-lg font-semibold tracking-[-0.04em] text-[#1d1a17] transition-colors duration-200 hover:text-[#544536] focus:text-[#544536] sm:text-xl"
             >
               Vaseena Labs
-            </a>
+            </a> */}
 
             <p className="mt-3 max-w-[260px] text-sm leading-6 text-[#5d5a57] sm:text-[0.95rem]">
               Designing digital experiences. Automating intelligent businesses.
